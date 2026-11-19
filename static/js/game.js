@@ -30,3 +30,14 @@ document.addEventListener("keydown",(button)=>{
             break
     }
 })
+
+
+export async function triggerGameOver() {
+/**
+ * Purpose: End the round when time reaches zero, update the local user JSON, sync it to the server via POST, and re-fetch via GET to confirm synchronization.
+ * Parameters: None.
+ * Return: Promise<void>
+ * Calls: showGameOverScreen(), appendRoundToLocalUserJson(), syncUserJsonToAPI(), fetchUserJsonAPI(), saveUserJsonToStorage(), displayErrorMessage()
+ */
+
+}
