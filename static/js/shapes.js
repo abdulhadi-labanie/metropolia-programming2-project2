@@ -1,11 +1,9 @@
 /**
  * Purpose: Clear the entire canvas before drawing the next frame.
- * Parameters: ctx (CanvasRenderingContext2D), width (Number), height (Number)
  * Return: void
- * Calls: ctx.clearRect()
  */
 export function clearCanvas(ctx, width, height) {
-
+    ctx.clearRect()
 }
 
 /**
