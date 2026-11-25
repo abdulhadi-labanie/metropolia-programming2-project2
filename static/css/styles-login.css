@@ -1,0 +1,27 @@
+body {
+    margin: 0px;
+    display: grid;
+    justify-content: center;
+    background-color: lightpink;
+}
+
+header {
+    text-align: center;
+    padding: 30px;
+}
+
+.form {
+    background-color: rgb(170, 155, 255);
+    display: grid;
+    justify-content: center;
+    padding-top: 4rem; 
+    padding-left: 100px;
+    padding-right: 100px;
+    height: 200px;  
+    text-align: center; 
+    box-shadow: 0 0 10px black;
+}
+
+.submit {
+    padding: 10px 24px;
+}
