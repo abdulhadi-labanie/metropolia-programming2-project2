@@ -1,21 +1,19 @@
-
-export async function fetchUserJsonAPI(username) {
 /**
- * Purpose: Send a GET request to the backend to retrieve the full <username>.json file if it exists.
- * Parameters: username (String - The player's username).
- * Return: Promise<Object | null> (Returns the complete JSON file content if found, or null if the server returns 404).
+ * Purpose: Send the final playerData object via a single POST request to the backend when the game ends.
+ * Parameters: playerData (Object)
+ * Return: Promise<Object> (Server response confirming save status)
  * Calls: fetch()
  */
+export async function postPlayerResultAPI(playerData) {
 
 }
 
-
-export async function syncUserJsonToAPI(fullUserJson) {
 /**
- * Purpose: Send the complete, updated JSON object to the backend to overwrite the existing file.
- * Parameters: fullUserJson (Object - Complete user data including the newly played round).
- * Return: Promise<Boolean> (Returns true if saved successfully on the server, false on failure).
+ * Purpose: Fetch the list of top player scores from the backend via GET for scoreboard.html.
+ * Parameters: None
+ * Return: Promise<Array<Object>> (Array of player score records)
  * Calls: fetch()
  */
+export async function fetchLeaderboardAPI() {
 
 }
