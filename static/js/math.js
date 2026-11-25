@@ -4,8 +4,23 @@
  * Return: Object ({ x: Number, y: Number })
  * Calls: None
  */
+//Character width??
 export function calculateCharacterPosition(character, direction, canvasBounds) {
+    character.x = character.x + (direction.dx * character.speed);
+    character.y = character.y + (direction.dy * character.speed);
 
+    if (character.x < 0) {
+        character.x = 0;
+    }
+    if (character.y < 0) {
+        character.y = 0;
+    }
+    if (character.x > canvasBounds.width) {
+        character.x = canvasBounds.width;
+    }
+    if (character.y > canvasBounds.height) {
+        character.y = canvasBounds.height;
+    }
 }
 
 /**
