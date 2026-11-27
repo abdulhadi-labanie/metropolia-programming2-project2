@@ -185,10 +185,11 @@ document.addEventListener("keydown",(button)=>{
 
 //export async function triggerGameOver() {
 /**
- * Purpose: End the round when time reaches zero, update the local user JSON, sync it to the server via POST, and re-fetch via GET to confirm synchronization.
- * Parameters: None.
+ * Purpose: Execute post-game actions once time expires (show Game Over modal and POST playerData to backend).
+ * Parameters: None
  * Return: Promise<void>
- * Calls: showGameOverScreen(), appendRoundToLocalUserJson(), syncUserJsonToAPI(), fetchUserJsonAPI(), saveUserJsonToStorage(), displayErrorMessage()
+ * Calls: showGameOverModal(), postPlayerResultAPI()
  */
+async function handleGameOver() {
 
 //}
