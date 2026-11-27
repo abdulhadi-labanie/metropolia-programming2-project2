@@ -1,3 +1,4 @@
+
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
 canvas.width = window.innerWidth;
@@ -12,11 +13,12 @@ const borderLeft = 0;
 const borderBottom = canvas.height - 50;
 const borderTop = 0;
 
-class Item{
-    constructor(type, item_x_pos, item_y_pos){
+export class Item{
+    constructor(type, item_x_pos, item_y_pos, item_size){
         this.type = type;
         this.item_x_pos = item_x_pos
         this.item_y_pos = item_y_pos
+        this.item_size = item_size
     }
     renderItem(){
         switch(this.type){
@@ -33,7 +35,7 @@ class Item{
                 ctx.fillStyle = "yellow";//cardboard
                 break
         }
-        let item = ctx.fillRect(this.item_x_pos, this.item_y_pos, 30, 30);
+        let item = ctx.fillRect(this.item_x_pos, this.item_y_pos, this.item_size, this.item_size);
         console.log(this.item_x_pos, this.item_y_pos)
         return item;
     };
@@ -43,13 +45,19 @@ var gameOver = false;
 let item_array = []
 function starGame(){
     if(gameOver==false){
-        let item = new Item(1, canvas.width/2-30, canvas.height/2+100)
+        let item = new Item(1, canvas.width/2-30-300 , canvas.height/2-300, 40, 40)
         item.renderItem();
         item_array.push(item);
         console.log(item.item_x_pos, item.item_y_pos)
-        let item2 = new Item(1, canvas.width/2-30 +100, canvas.height/2+100)
+        let item2 = new Item(2, canvas.width/2-30 -200, canvas.height/2-300, 40, 40)
         item2.renderItem();
         item_array.push(item2);
+        let item3 = new Item(3, canvas.width/2-30 -100, canvas.height/2-300, 40, 40)
+        item3.renderItem();
+        item_array.push(item3);
+        let item4 = new Item(4, canvas.width/2-30 +300, canvas.height/2-300, 40, 40)
+        item4.renderItem();
+        item_array.push(item4);
     }
 }
 starGame()
@@ -91,9 +99,9 @@ function checkObjectsCollision(buttonPress){
             next_y_pos = player_y_pos-10;
             next_x_pos = player_x_pos;
             item_array.forEach(item=>{
-                if(next_x_pos < item.item_x_pos + 30 &&
+                if(next_x_pos < item.item_x_pos + item.item_size &&
                     next_x_pos + 50 > item.item_x_pos &&
-                    next_y_pos < item.item_y_pos + 30 &&
+                    next_y_pos < item.item_y_pos + item.item_size &&
                     next_y_pos + 50 > item.item_y_pos){
                     collides_with_item = true
                 }
@@ -107,9 +115,9 @@ function checkObjectsCollision(buttonPress){
             next_y_pos = player_y_pos+10;
             next_x_pos = player_x_pos;
             item_array.forEach(item=>{
-                if(next_x_pos < item.item_x_pos + 30 &&
+                if(next_x_pos < item.item_x_pos + item.item_size &&
                     next_x_pos + 50 > item.item_x_pos &&
-                    next_y_pos < item.item_y_pos + 30 &&
+                    next_y_pos < item.item_y_pos + item.item_size &&
                     next_y_pos + 50 > item.item_y_pos){
                     collides_with_item = true
                 }
@@ -123,9 +131,9 @@ function checkObjectsCollision(buttonPress){
             next_y_pos = player_y_pos;
             next_x_pos = player_x_pos-10;
             item_array.forEach(item=>{
-                if(next_x_pos < item.item_x_pos + 30 &&
+                if(next_x_pos < item.item_x_pos + item.item_size &&
                     next_x_pos + 50 > item.item_x_pos &&
-                    next_y_pos < item.item_y_pos + 30 &&
+                    next_y_pos < item.item_y_pos + item.item_size &&
                     next_y_pos + 50 > item.item_y_pos){
                     collides_with_item = true
                 }
@@ -139,9 +147,9 @@ function checkObjectsCollision(buttonPress){
             next_y_pos = player_y_pos;
             next_x_pos = player_x_pos+10;
             item_array.forEach(item=>{
-                if(next_x_pos < item.item_x_pos + 30 &&
+                if(next_x_pos < item.item_x_pos + item.item_size &&
                     next_x_pos + 50 > item.item_x_pos &&
-                    next_y_pos < item.item_y_pos + 30 &&
+                    next_y_pos < item.item_y_pos + item.item_size &&
                     next_y_pos + 50 > item.item_y_pos){
                     collides_with_item = true
                 }
