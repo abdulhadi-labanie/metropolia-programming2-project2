@@ -47,11 +47,14 @@ function starGame(){
         item.renderItem();
         item_array.push(item);
         console.log(item.item_x_pos, item.item_y_pos)
+        let item2 = new Item(1, canvas.width/2-30 +100, canvas.height/2+100)
+        item2.renderItem();
+        item_array.push(item2);
     }
 }
 starGame()
 
-function checkBorderCollison(buttonPress){
+function checkBorderCollision(buttonPress){
     switch(buttonPress){
         case "w":
             if(player_y_pos<=borderTop){
@@ -79,13 +82,19 @@ function checkBorderCollison(buttonPress){
             }
     }
 }
-function checkObjectsCollison(buttonPress){
+function checkObjectsCollision(buttonPress){
     let collides_with_item = false;
+     let next_y_pos;
+     let next_x_pos;
     switch(buttonPress){
         case "w":
+            next_y_pos = player_y_pos-10;
+            next_x_pos = player_x_pos;
             item_array.forEach(item=>{
-                console.log(item.item_y_pos)
-                if(player_y_pos==item.item_y_pos){
+                if(next_x_pos < item.item_x_pos + 30 &&
+                    next_x_pos + 50 > item.item_x_pos &&
+                    next_y_pos < item.item_y_pos + 30 &&
+                    next_y_pos + 50 > item.item_y_pos){
                     collides_with_item = true
                 }
             })
@@ -95,10 +104,13 @@ function checkObjectsCollison(buttonPress){
                 return false
             }
         case "s":
+            next_y_pos = player_y_pos+10;
+            next_x_pos = player_x_pos;
             item_array.forEach(item=>{
-                console.log(item.item_y_pos)
-                if(player_y_pos==item.item_y_pos){
-                    console.log("jfsdadnkjdfks")
+                if(next_x_pos < item.item_x_pos + 30 &&
+                    next_x_pos + 50 > item.item_x_pos &&
+                    next_y_pos < item.item_y_pos + 30 &&
+                    next_y_pos + 50 > item.item_y_pos){
                     collides_with_item = true
                 }
             })
@@ -108,10 +120,13 @@ function checkObjectsCollison(buttonPress){
                 return false
             }
         case "a":
+            next_y_pos = player_y_pos;
+            next_x_pos = player_x_pos-10;
             item_array.forEach(item=>{
-                console.log(item.item_y_pos)
-                if(player_x_pos==item.item_y_pos){
-                    console.log("jfsdadnkjdfks")
+                if(next_x_pos < item.item_x_pos + 30 &&
+                    next_x_pos + 50 > item.item_x_pos &&
+                    next_y_pos < item.item_y_pos + 30 &&
+                    next_y_pos + 50 > item.item_y_pos){
                     collides_with_item = true
                 }
             })
@@ -121,10 +136,13 @@ function checkObjectsCollison(buttonPress){
                 return false
             }
         case "d":
+            next_y_pos = player_y_pos;
+            next_x_pos = player_x_pos+10;
             item_array.forEach(item=>{
-                console.log(item.item_y_pos)
-                if(player_x_pos==item.item_y_pos){
-                    console.log("jfsdadnkjdfks")
+                if(next_x_pos < item.item_x_pos + 30 &&
+                    next_x_pos + 50 > item.item_x_pos &&
+                    next_y_pos < item.item_y_pos + 30 &&
+                    next_y_pos + 50 > item.item_y_pos){
                     collides_with_item = true
                 }
             })
@@ -140,9 +158,9 @@ document.addEventListener("keydown",(button)=>{
     let collides_with_object;
     switch(button.key.toLowerCase()){
         case "w":
-            collides_with_boder =  checkBorderCollison("w");
-            collides_with_object =  checkObjectsCollison("w");
-            if(collides_with_boder == false ){
+            collides_with_boder =  checkBorderCollision("w");
+            collides_with_object =  checkObjectsCollision("w");
+            if(collides_with_boder == false && collides_with_object==false){
                 ctx.fillStyle = "red";
                 ctx.clearRect(player_x_pos, player_y_pos, 50, 50);
                 player_y_pos-=10;
@@ -150,9 +168,9 @@ document.addEventListener("keydown",(button)=>{
             }
             break
         case "a":
-            collides_with_boder =  checkBorderCollison("a");
-            collides_with_object =  checkObjectsCollison("a");
-            if(collides_with_boder == false){
+            collides_with_boder =  checkBorderCollision("a");
+            collides_with_object =  checkObjectsCollision("a");
+            if(collides_with_boder == false && collides_with_object==false){
                 ctx.fillStyle = "red";
                 ctx.clearRect(player_x_pos, player_y_pos, 50, 50);
                 player_x_pos-=10;
@@ -160,9 +178,9 @@ document.addEventListener("keydown",(button)=>{
             }
             break
         case "s":
-            collides_with_boder =  checkBorderCollison("s");
-            collides_with_object =  checkObjectsCollison("s");
-            if(collides_with_boder == false){
+            collides_with_boder =  checkBorderCollision("s");
+            collides_with_object =  checkObjectsCollision("s");
+            if(collides_with_boder == false && collides_with_object==false){
                 ctx.fillStyle = "red";
                 ctx.clearRect(player_x_pos, player_y_pos, 50, 50);
                 player_y_pos+=10;
@@ -170,9 +188,9 @@ document.addEventListener("keydown",(button)=>{
             }
             break
         case "d":
-            collides_with_boder =  checkBorderCollison("d");
-            collides_with_object =  checkObjectsCollison("d");
-            if(collides_with_boder == false){
+            collides_with_boder =  checkBorderCollision("d");
+            collides_with_object =  checkObjectsCollision("d");
+            if(collides_with_boder == false && collides_with_object==false){
                 ctx.fillStyle = "red";
                 ctx.clearRect(player_x_pos, player_y_pos, 55, 55);
                 player_x_pos+=10;
@@ -185,11 +203,10 @@ document.addEventListener("keydown",(button)=>{
 
 //export async function triggerGameOver() {
 /**
- * Purpose: Execute post-game actions once time expires (show Game Over modal and POST playerData to backend).
- * Parameters: None
+ * Purpose: End the round when time reaches zero, update the local user JSON, sync it to the server via POST, and re-fetch via GET to confirm synchronization.
+ * Parameters: None.
  * Return: Promise<void>
- * Calls: showGameOverModal(), postPlayerResultAPI()
+ * Calls: showGameOverScreen(), appendRoundToLocalUserJson(), syncUserJsonToAPI(), fetchUserJsonAPI(), saveUserJsonToStorage(), displayErrorMessage()
  */
-async function handleGameOver() {
 
 //}
