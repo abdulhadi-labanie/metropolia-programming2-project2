@@ -4,6 +4,13 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+canvas {
+    background-color: #EEE8BA;
 }
 
 h1 {
