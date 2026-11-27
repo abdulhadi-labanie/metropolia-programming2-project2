@@ -1,0 +1,32 @@
+body {
+    background-color: #aedeac;
+    margin: 0;
+}
+
+.page-layout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#header {
+    padding: 1rem 1.5rem;
+}
+
+#container {
+    background-color: #3db17b;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding-left: 50px;
+    padding-right: 50px;
+    width: 500px;
+    height: 600px;
+}
+
+.score {
+    background-color: cadetblue;
+    padding: 20px;
+    border-style: solid;
+}
